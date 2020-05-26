@@ -3,15 +3,6 @@
     name: blocks_log
 - table:
     schema: public
-    name: channels
-- table:
-    schema: public
-    name: clients
-- table:
-    schema: public
-    name: connections
-- table:
-    schema: public
     name: fn_table_channels
 - table:
     schema: public
@@ -48,35 +39,28 @@
     name: fn_table_zones_graph
 - table:
     schema: public
-    name: ibc_tx_hourly_stats
+    name: ibc_channel_zone
 - table:
     schema: public
-    name: ibc_tx_hourly_stats_old
+    name: ibc_channels
+- table:
+    schema: public
+    name: ibc_clients
+- table:
+    schema: public
+    name: ibc_connections
+- table:
+    schema: public
+    name: ibc_transfer_hourly_stats
+- table:
+    schema: public
+    name: periods
 - table:
     schema: public
     name: total_tx_hourly_stats
 - table:
     schema: public
+    name: zone_nodes
+- table:
+    schema: public
     name: zones
-  array_relationships:
-  - name: ibc_tx_hourly_stats
-    using:
-      foreign_key_constraint_on:
-        column: zone_src
-        table:
-          schema: public
-          name: ibc_tx_hourly_stats_old
-  - name: ibcTxHourlyStatsByZoneDect
-    using:
-      foreign_key_constraint_on:
-        column: zone_dest
-        table:
-          schema: public
-          name: ibc_tx_hourly_stats_old
-  - name: total_tx_hourly_stats
-    using:
-      foreign_key_constraint_on:
-        column: zone
-        table:
-          schema: public
-          name: total_tx_hourly_stats

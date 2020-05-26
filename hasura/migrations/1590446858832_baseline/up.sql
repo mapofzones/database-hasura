@@ -86,8 +86,8 @@ CREATE TABLE public.channels (
     opened boolean
 );
 
-CREATE TABLE public.clients (
-    source character varying NOT NULL,
+CREATE TABLE public.ibc_clients (
+    zone character varying NOT NULL,
     client_id character varying NOT NULL,
     chain_id character varying NOT NULL
 );
@@ -115,13 +115,6 @@ CREATE TABLE public.ibc_tx_hourly_stats (
     txs_cnt integer NOT NULL
 );
 
-CREATE TABLE public.ibc_tx_hourly_stats_old (
-    zone_src character varying NOT NULL,
-    zone_dest character varying NOT NULL,
-    hour timestamp without time zone NOT NULL,
-    txs_cnt integer NOT NULL
-);
-
 CREATE TABLE public.total_tx_hourly_stats (
     zone character varying NOT NULL,
     hour timestamp without time zone NOT NULL,
@@ -142,8 +135,8 @@ ALTER TABLE ONLY public.blocks_log
 ALTER TABLE ONLY public.channels
     ADD CONSTRAINT channels_pkey PRIMARY KEY (source, channel_id);
     
-ALTER TABLE ONLY public.clients
-    ADD CONSTRAINT clients_pkey PRIMARY KEY (source, client_id);
+ALTER TABLE ONLY public.ibc_clients
+    ADD CONSTRAINT ibc_clients_pkey PRIMARY KEY (zone, client_id);
     
 ALTER TABLE ONLY public.connections
     ADD CONSTRAINT connections_pkey PRIMARY KEY (source, connection_id);
@@ -157,9 +150,6 @@ ALTER TABLE ONLY public.fn_table_txs_rating_txsdiff_ratingdiff
 ALTER TABLE ONLY public.fn_table_zones_graph
     ADD CONSTRAINT fn_table_zones_graph_pkey PRIMARY KEY (zones);
     
-ALTER TABLE ONLY public.ibc_tx_hourly_stats_old
-    ADD CONSTRAINT ibc_tx_hourly_stats_pkey PRIMARY KEY (zone_src, zone_dest, hour);
-    
 ALTER TABLE ONLY public.ibc_tx_hourly_stats
     ADD CONSTRAINT ibc_tx_hourly_stats_pkey1 PRIMARY KEY (source, zone_src, zone_dest, hour);
     
@@ -167,28 +157,19 @@ ALTER TABLE ONLY public.total_tx_hourly_stats
     ADD CONSTRAINT total_tx_hourly_stats_pkey PRIMARY KEY (zone, hour);
     
 ALTER TABLE ONLY public.zones
-    ADD CONSTRAINT zones_chain_id_key UNIQUE (chain_id);
-    
-ALTER TABLE ONLY public.zones
-    ADD CONSTRAINT zones_pkey PRIMARY KEY (name);
+    ADD CONSTRAINT zones_pkey PRIMARY KEY (chain_id);
     
 ALTER TABLE ONLY public.channels
     ADD CONSTRAINT channels_source_connection_id_fkey FOREIGN KEY (source, connection_id) REFERENCES public.connections(source, connection_id) ON UPDATE RESTRICT ON DELETE RESTRICT;
     
-ALTER TABLE ONLY public.clients
-    ADD CONSTRAINT clients_source_fkey FOREIGN KEY (source) REFERENCES public.zones(chain_id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+ALTER TABLE ONLY public.ibc_clients
+    ADD CONSTRAINT ibc_clients_zone_fkey FOREIGN KEY (zone) REFERENCES public.zones(chain_id) ON UPDATE RESTRICT ON DELETE RESTRICT;
     
 ALTER TABLE ONLY public.connections
-    ADD CONSTRAINT connections_source_client_id_fkey FOREIGN KEY (source, client_id) REFERENCES public.clients(source, client_id) ON UPDATE RESTRICT ON DELETE RESTRICT;
-    
-ALTER TABLE ONLY public.ibc_tx_hourly_stats_old
-    ADD CONSTRAINT ibc_tx_hourly_stats_zone_dect_fkey FOREIGN KEY (zone_dest) REFERENCES public.zones(name) ON UPDATE RESTRICT ON DELETE RESTRICT;
-    
-ALTER TABLE ONLY public.ibc_tx_hourly_stats_old
-    ADD CONSTRAINT ibc_tx_hourly_stats_zone_src_fkey FOREIGN KEY (zone_src) REFERENCES public.zones(name) ON UPDATE RESTRICT ON DELETE RESTRICT;
+    ADD CONSTRAINT connections_source_client_id_fkey FOREIGN KEY (source, client_id) REFERENCES public.ibc_clients(zone, client_id) ON UPDATE RESTRICT ON DELETE RESTRICT;
     
 ALTER TABLE ONLY public.total_tx_hourly_stats
-    ADD CONSTRAINT total_tx_hourly_stats_zone_fkey FOREIGN KEY (zone) REFERENCES public.zones(name) ON UPDATE RESTRICT ON DELETE RESTRICT;
+    ADD CONSTRAINT total_tx_hourly_stats_zone_fkey FOREIGN KEY (zone) REFERENCES public.zones(chain_id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 CREATE FUNCTION public.get_total_tx_stats_on_period(period_in_hours integer) RETURNS SETOF public.fn_table_txs
     LANGUAGE sql STABLE
