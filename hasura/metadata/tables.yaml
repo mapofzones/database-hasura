@@ -1,0 +1,82 @@
+- table:
+    schema: public
+    name: blocks_log
+- table:
+    schema: public
+    name: channels
+- table:
+    schema: public
+    name: clients
+- table:
+    schema: public
+    name: connections
+- table:
+    schema: public
+    name: fn_table_channels
+- table:
+    schema: public
+    name: fn_table_full_stats_for_each
+- table:
+    schema: public
+    name: fn_table_id
+- table:
+    schema: public
+    name: fn_table_percent
+- table:
+    schema: public
+    name: fn_table_txs
+- table:
+    schema: public
+    name: fn_table_txs_rating_txsdiff_ratingdiff
+- table:
+    schema: public
+    name: fn_table_zone_channels
+- table:
+    schema: public
+    name: fn_table_zone_chart
+- table:
+    schema: public
+    name: fn_table_zone_percent
+- table:
+    schema: public
+    name: fn_table_zone_txs
+- table:
+    schema: public
+    name: fn_table_zones_channels_zones_channels_chart_pair
+- table:
+    schema: public
+    name: fn_table_zones_graph
+- table:
+    schema: public
+    name: ibc_tx_hourly_stats
+- table:
+    schema: public
+    name: ibc_tx_hourly_stats_old
+- table:
+    schema: public
+    name: total_tx_hourly_stats
+- table:
+    schema: public
+    name: zones
+  array_relationships:
+  - name: ibc_tx_hourly_stats
+    using:
+      foreign_key_constraint_on:
+        column: zone_src
+        table:
+          schema: public
+          name: ibc_tx_hourly_stats_old
+  - name: ibcTxHourlyStatsByZoneDect
+    using:
+      foreign_key_constraint_on:
+        column: zone_dest
+        table:
+          schema: public
+          name: ibc_tx_hourly_stats_old
+  - name: total_tx_hourly_stats
+    using:
+      foreign_key_constraint_on:
+        column: zone
+        table:
+          schema: public
+          name: total_tx_hourly_stats

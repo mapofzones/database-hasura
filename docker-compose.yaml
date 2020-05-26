@@ -1,22 +1,24 @@
 version: '3.6'
 services:
   postgres:
+    container_name: postgres-moz
     image: postgres:12
     env_file:
       - ./.env
-    build:
-      context: ./db
     restart: always
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-  graphql-engine:
-    image: hasura/graphql-engine:v1.2.1
+  hasura:
+    container_name: hasura-moz
+    image: hasura-moz
     env_file:
       - ./.env
+    build:
+      context: ./hasura
     ports:
-      - "8080:8080"
+      - "8081:8080"
     depends_on:
       - "postgres"
     restart: always

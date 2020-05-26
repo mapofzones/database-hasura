@@ -1,0 +1,7 @@
+version: 2
+endpoint: http://localhost:8081
+metadata_directory: metadata
+admin_secret: changeme2
+actions:
+  kind: synchronous
+  handler_webhook_baseurl: http://localhost:3000
