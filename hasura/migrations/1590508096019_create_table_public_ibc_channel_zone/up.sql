@@ -1,1 +1,0 @@
-CREATE TABLE "public"."ibc_channel_zone"("zone" varchar NOT NULL, "chanel_id" varchar NOT NULL, "chain_id" varchar NOT NULL, "added_at" timestamp NOT NULL DEFAULT now(), PRIMARY KEY ("zone","chanel_id") , FOREIGN KEY ("zone", "chanel_id") REFERENCES "public"."ibc_channels"("zone", "channel_id") ON UPDATE restrict ON DELETE restrict);
