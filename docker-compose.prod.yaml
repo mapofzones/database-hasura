@@ -1,0 +1,6 @@
+version: '3.6'
+services:
+  hasura:
+    image: hasura/graphql-engine:v1.2.1
+    environment:
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "false" # set to "false" to disable console

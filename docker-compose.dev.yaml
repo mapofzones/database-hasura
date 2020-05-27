@@ -1,0 +1,8 @@
+version: '3.6'
+services:
+  hasura:
+    image: hasura-moz:dev
+    build:
+      context: ./hasura
+    environment:
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console

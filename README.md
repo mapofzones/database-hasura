@@ -40,11 +40,11 @@ All commands must be executed in the ```./hasura``` directory or initialized a n
 
 Build or rebuild services:
 ```
-docker-compose build
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml build
 ```
 Builds, (re)creates, starts, and attaches to containers for a service:
 ```
-docker-compose up -d
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d
 ```
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Danger zone!
@@ -55,11 +55,13 @@ created by `up`.
 * Not for production!
 
 ```diff
-- docker-compose down -v
+- docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml down -v
 ```
 
 ## Prod
 
+Just builds, (re)creates, starts, and attaches to containers for a service:
+
 ```
-todo
+docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d
 ```

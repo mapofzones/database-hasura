@@ -12,17 +12,12 @@ services:
       - "5432:5432"
   hasura:
     container_name: hasura-moz
-    image: hasura-moz
     env_file:
       - ./.env
-    build:
-      context: ./hasura
     ports:
       - "8081:8080"
     depends_on:
       - "postgres"
     restart: always
-    environment:
-      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
 volumes:
   db_data:
