@@ -39,6 +39,9 @@
     name: fn_table_zones_graph
 - table:
     schema: public
+    name: headers
+- table:
+    schema: public
     name: ibc_channel_zone
 - table:
     schema: public
@@ -64,3 +67,9 @@
 - table:
     schema: public
     name: zones
+- table:
+    schema: public
+    name: zones_graphs
+- table:
+    schema: public
+    name: zones_stats
