@@ -1,5 +1,8 @@
 # Database-hasura 
 
+Status of Last Deployment:<br>
+<img src="https://github.com/mapofzones/database-hasura/workflows/Docker%20Images%20CI/badge.svg"><br>
+
 Database-hasura is a postgres with hasura instance that manages data and access to it.
 
 ## Installation
