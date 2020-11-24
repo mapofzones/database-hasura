@@ -36,9 +36,6 @@
     name: get_total_ibc_tx_stats_on_period
 - function:
     schema: public
-    name: get_total_stats
-- function:
-    schema: public
     name: get_total_tx_stats_on_period
 - function:
     schema: public
