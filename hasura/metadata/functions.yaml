@@ -1,8 +1,5 @@
 - function:
     schema: public
-    name: get_full_stats_for_each_zone
-- function:
-    schema: public
     name: get_ibc_channels_stats_on_period
 - function:
     schema: public
