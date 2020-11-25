@@ -4,6 +4,20 @@
 - table:
     schema: public
     name: headers
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - timeframe
+      - zones_cnt_all
+      - channels_cnt_all
+      - zones_cnt_period
+      - channels_cnt_period
+      - chart
+      - top_zone_pair
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
 - table:
     schema: public
     name: ibc_channel_zone
@@ -34,6 +48,48 @@
 - table:
     schema: public
     name: zones_graphs
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - timeframe
+      - source
+      - target
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
 - table:
     schema: public
     name: zones_stats
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - timeframe
+      - zone
+      - chart
+      - ibc_tx_in
+      - total_txs
+      - ibc_tx_out
+      - ibc_percent
+      - channels_num
+      - total_ibc_txs
+      - ibc_tx_in_diff
+      - total_txs_diff
+      - ibc_tx_out_diff
+      - ibc_tx_in_rating
+      - ibc_tx_in_weight
+      - total_txs_rating
+      - total_txs_weight
+      - ibc_tx_out_rating
+      - ibc_tx_out_weight
+      - total_ibc_txs_diff
+      - total_ibc_txs_rating
+      - total_ibc_txs_weight
+      - ibc_tx_in_rating_diff
+      - total_txs_rating_diff
+      - ibc_tx_out_rating_diff
+      - total_ibc_txs_rating_diff
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
