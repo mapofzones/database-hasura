@@ -23,7 +23,8 @@ jobs:
 #         # The login password for the registry
 #         password: ${{ secrets.GITHUB_TOKEN }}
 #         # Use registry for pushing to a custom registry
-#         registry: docker.pkg.github.com/mapofzones/database-hasura #ghcr.io # optional
+# #         registry: docker.pkg.github.com/mapofzones/database-hasura #ghcr.io # optional
+#         registry: registry.digitalocean.com/mapofzones/database-hasura #ghcr.io # optional
 #         # Use snapshot to push an additional image
 # #         snapshot: # optional
 #         # Set the default branch of your repository (default: master)
@@ -48,6 +49,7 @@ jobs:
 # #         tag_semver: # optional
 #         # Set no_push to true if you want to prevent the action from pushing to a registry (default: false)
 # #         no_push: # optional
+    
     - name: GitHub Action for DigitalOcean - doctl
       # You may pin to the exact commit or the version.
       # uses: digitalocean/action-doctl@7f3a9967e5f7b8f4581cf10e6891535614f36850
@@ -57,18 +59,32 @@ jobs:
 #         version: # optional, default is latest
         # DigitalOcean API Token
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-    - name: Change directory context
+
+
+    - name: Build backend
+      env:
+        DOCKER_BUILDKIT: 1
       run: |
-        cd hasura
-    - name: DigitalOcean Docker Image Publish
-      # You may pin to the exact commit or the version.
-      # uses: ripplr-io/docr-docker-publish@4b4d57000d6e16fe589b3cea2d491830b9d7da87
-      uses: ripplr-io/docr-docker-publish@v1
-      with:
-        # Image path in the format registry-name/image-name
-        image_path: ${{ secrets.IMAGE_PATH }}
-        # Number of characters from the commit SHA
-        sha_size: 8 # optional, default is 8
+        docker build -t ${{ secrets.REGISTRY }}:${{ github.sha }} ./hasura
+    - name: Push backend image
+      env:
+        DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        run: |
+          doctl registry login
+          docker push ${{ secrets.REGISTRY }}:${{ github.sha }}
+
+#     - name: Change directory context
+#       run: |
+#         cd hasura
+#     - name: DigitalOcean Docker Image Publish
+#       # You may pin to the exact commit or the version.
+#       # uses: ripplr-io/docr-docker-publish@4b4d57000d6e16fe589b3cea2d491830b9d7da87
+#       uses: ripplr-io/docr-docker-publish@v1
+#       with:
+#         # Image path in the format registry-name/image-name
+#         image_path: ${{ secrets.IMAGE_PATH }}
+#         # Number of characters from the commit SHA
+#         sha_size: 8 # optional, default is 8
 
     - name: Notify Telegram
       uses: yanzay/notify-telegram@v0.1.0
