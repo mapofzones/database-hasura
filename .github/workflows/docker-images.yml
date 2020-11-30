@@ -57,6 +57,9 @@ jobs:
 #         version: # optional, default is latest
         # DigitalOcean API Token
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    - name: Change directory context
+      run: |
+        cd hasura
     - name: DigitalOcean Docker Image Publish
       # You may pin to the exact commit or the version.
       # uses: ripplr-io/docr-docker-publish@4b4d57000d6e16fe589b3cea2d491830b9d7da87
