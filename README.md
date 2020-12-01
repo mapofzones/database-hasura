@@ -50,6 +50,11 @@ Builds, (re)creates, starts, and attaches to containers for a service:
 docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d
 ```
 
+If you want to run hasura for dev, but no migrations:
+```
+docker-compose -f docker-compose.yaml -f docker-compose.dev.reup.yaml up -d hasura
+```
+
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Danger zone!
 
 Stops containers and removes containers, networks, volumes, and images
