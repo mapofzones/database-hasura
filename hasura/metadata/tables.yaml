@@ -1,6 +1,15 @@
 - table:
     schema: public
     name: blocks_log
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - last_processed_block
+      - last_updated_at
+      - zone
+      filter: {}
+      limit: 1
 - table:
     schema: public
     name: headers
