@@ -1,0 +1,1 @@
+CREATE TABLE "public"."active_addresses"("address" varchar NOT NULL, "zone" varchar NOT NULL, "hour" timestamp NOT NULL, "period" int4 NOT NULL, PRIMARY KEY ("address","zone","hour","period") , FOREIGN KEY ("zone", "hour", "period") REFERENCES "public"."total_tx_hourly_stats"("zone", "hour", "period") ON UPDATE restrict ON DELETE restrict);
