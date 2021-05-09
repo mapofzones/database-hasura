@@ -54,6 +54,17 @@
 - table:
     schema: public
     name: zone_nodes
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - zone
+      - rpc_addr
+      - is_alive
+      - last_checked_at
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
 - table:
     schema: public
     name: zones
