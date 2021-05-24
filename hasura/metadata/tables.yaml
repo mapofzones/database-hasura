@@ -15,6 +15,34 @@
       limit: 1
 - table:
     schema: public
+    name: channels_stats
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - zone
+      - client_id
+      - connection_id
+      - channel_id
+      - zone_counerparty
+      - is_opened
+      - ibc_tx_1d
+      - ibc_tx_1d_diff
+      - ibc_tx_1d_failed
+      - ibc_tx_1d_failed_diff
+      - ibc_tx_7d
+      - ibc_tx_7d_diff
+      - ibc_tx_7d_failed
+      - ibc_tx_7d_failed_diff
+      - ibc_tx_30d
+      - ibc_tx_30d_diff
+      - ibc_tx_30d_failed
+      - ibc_tx_30d_failed_diff
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: public
     name: headers
   select_permissions:
   - role: front
