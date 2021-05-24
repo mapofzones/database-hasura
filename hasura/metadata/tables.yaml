@@ -66,9 +66,6 @@
       allow_aggregations: true
 - table:
     schema: public
-    name: ibc_channel_zone
-- table:
-    schema: public
     name: ibc_channels
 - table:
     schema: public
