@@ -1,0 +1,20 @@
+CREATE TYPE public.temp_t_channels_stats as (
+    zone character varying,
+	client_id character varying,
+	connection_id character varying,
+	channel_id character varying,
+	zone_counerparty character varying,
+	is_opened boolean,
+	ibc_tx_1d integer,
+	ibc_tx_1d_diff integer,
+	ibc_tx_1d_failed integer,
+	ibc_tx_1d_failed_diff integer,
+	ibc_tx_7d integer,
+	ibc_tx_7d_diff integer,
+	ibc_tx_7d_failed integer,
+	ibc_tx_7d_failed_diff integer,
+	ibc_tx_30d integer,
+	ibc_tx_30d_diff integer,
+	ibc_tx_30d_failed integer,
+	ibc_tx_30d_failed_diff integer
+);
