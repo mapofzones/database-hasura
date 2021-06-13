@@ -119,45 +119,46 @@
   - role: front
     permission:
       columns:
-      - timeframe
-      - zone
-      - chart
-      - ibc_tx_in
-      - total_txs
-      - ibc_tx_out
-      - ibc_percent
-      - channels_num
-      - total_ibc_txs
-      - ibc_tx_in_diff
-      - total_txs_diff
-      - ibc_tx_out_diff
-      - ibc_tx_in_rating
-      - ibc_tx_in_weight
-      - total_txs_rating
-      - total_txs_weight
-      - ibc_tx_out_rating
-      - ibc_tx_out_weight
-      - total_ibc_txs_diff
-      - total_ibc_txs_rating
-      - total_ibc_txs_weight
-      - ibc_tx_in_rating_diff
-      - total_txs_rating_diff
-      - ibc_tx_out_rating_diff
-      - total_ibc_txs_rating_diff
-      - total_active_addresses
-      - total_active_addresses_diff
-      - ibc_tx_failed
-      - ibc_tx_failed_diff
-      - total_active_addresses_rating
-      - total_active_addresses_rating_diff
-      - total_coin_turnover_amount_diff
-      - total_coin_turnover_amount
-      - relations_cnt_open
-      - channels_cnt_open
       - channels_cnt_active_period
       - channels_cnt_active_period_diff
+      - channels_cnt_open
+      - channels_num
       - channels_percent_active_period
       - channels_percent_active_period_diff
+      - chart
+      - ibc_percent
+      - ibc_tx_failed
+      - ibc_tx_failed_diff
+      - ibc_tx_in
+      - ibc_tx_in_diff
+      - ibc_tx_in_rating
+      - ibc_tx_in_rating_diff
+      - ibc_tx_in_weight
+      - ibc_tx_out
+      - ibc_tx_out_diff
+      - ibc_tx_out_rating
+      - ibc_tx_out_rating_diff
+      - ibc_tx_out_weight
+      - relations_cnt_open
+      - timeframe
+      - total_active_addresses
+      - total_active_addresses_diff
+      - total_active_addresses_rating
+      - total_active_addresses_rating_diff
+      - total_active_addresses_weight
+      - total_coin_turnover_amount
+      - total_coin_turnover_amount_diff
+      - total_ibc_txs
+      - total_ibc_txs_diff
+      - total_ibc_txs_rating
+      - total_ibc_txs_rating_diff
+      - total_ibc_txs_weight
+      - total_txs
+      - total_txs_diff
+      - total_txs_rating
+      - total_txs_rating_diff
+      - total_txs_weight
+      - zone
       filter: {}
       limit: 10000
       allow_aggregations: true
