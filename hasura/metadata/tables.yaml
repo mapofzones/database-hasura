@@ -106,9 +106,12 @@
   - role: front
     permission:
       columns:
-      - timeframe
+      - channels_cnt_active
+      - channels_cnt_open
+      - channels_percent_active
       - source
       - target
+      - timeframe
       filter: {}
       limit: 10000
       allow_aggregations: true
