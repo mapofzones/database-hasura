@@ -38,6 +38,10 @@
       - ibc_tx_30d_diff
       - ibc_tx_30d_failed
       - ibc_tx_30d_failed_diff
+      - zone_label_url
+      - zone_counterparty_label_url
+      - zone_readable_name
+      - zone_counterparty_readable_name
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -61,6 +65,7 @@
       - channels_cnt_active_period_diff
       - channels_percent_active_period
       - channels_percent_active_period_diff
+      - is_mainnet_only
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -164,6 +169,26 @@
       - total_active_addresses_weight
       - ibc_tx_in_failed
       - ibc_tx_out_failed
+      - zone_label_url
+      - is_zone_mainnet
+      - is_zone_new
+      - is_zone_up_to_date
+      - zone_readable_name
+      - ibc_tx_in_mainnet_rating
+      - total_active_addresses_mainnet_weight
+      - total_active_addresses_mainnet_rating_diff
+      - total_active_addresses_mainnet_rating
+      - total_ibc_txs_mainnet_rating_diff
+      - ibc_tx_out_mainnet_rating_diff
+      - total_txs_mainnet_rating_diff
+      - ibc_tx_in_mainnet_rating_diff
+      - total_ibc_txs_mainnet_weight
+      - total_ibc_txs_mainnet_rating
+      - ibc_tx_out_mainnet_weight
+      - ibc_tx_out_mainnet_rating
+      - total_txs_mainnet_weight
+      - total_txs_mainnet_rating
+      - ibc_tx_in_mainnet_weight
       filter: {}
       limit: 10000
       allow_aggregations: true
