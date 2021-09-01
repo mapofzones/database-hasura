@@ -1,0 +1,1 @@
+ALTER TABLE "public"."zones_stats" DROP COLUMN "total_txs_mainnet_rating_diff";
