@@ -42,6 +42,7 @@
       - zone_counterparty_label_url
       - zone_readable_name
       - zone_counterparty_readable_name
+      - is_zone_counerparty_mainnet
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -114,6 +115,7 @@
       - channels_cnt_active
       - channels_cnt_open
       - channels_percent_active
+      - is_mainnet
       - source
       - target
       - timeframe
