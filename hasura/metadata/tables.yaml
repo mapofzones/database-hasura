@@ -43,6 +43,8 @@
       - zone_readable_name
       - zone_counterparty_readable_name
       - is_zone_counerparty_mainnet
+      - zone_label_url2
+      - zone_counterparty_label_url2
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -191,6 +193,7 @@
       - total_txs_mainnet_weight
       - total_txs_mainnet_rating
       - ibc_tx_in_mainnet_weight
+      - zone_label_url2
       filter: {}
       limit: 10000
       allow_aggregations: true
