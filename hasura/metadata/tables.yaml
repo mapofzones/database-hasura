@@ -20,31 +20,32 @@
   - role: front
     permission:
       columns:
-      - zone
+      - channel_id
       - client_id
       - connection_id
-      - channel_id
-      - zone_counerparty
-      - is_opened
       - ibc_tx_1d
       - ibc_tx_1d_diff
       - ibc_tx_1d_failed
       - ibc_tx_1d_failed_diff
-      - ibc_tx_7d
-      - ibc_tx_7d_diff
-      - ibc_tx_7d_failed
-      - ibc_tx_7d_failed_diff
       - ibc_tx_30d
       - ibc_tx_30d_diff
       - ibc_tx_30d_failed
       - ibc_tx_30d_failed_diff
-      - zone_label_url
-      - zone_counterparty_label_url
-      - zone_readable_name
-      - zone_counterparty_readable_name
+      - ibc_tx_7d
+      - ibc_tx_7d_diff
+      - ibc_tx_7d_failed
+      - ibc_tx_7d_failed_diff
+      - is_opened
       - is_zone_counerparty_mainnet
-      - zone_label_url2
+      - zone
+      - zone_counerparty
+      - zone_counterparty_channel_id
+      - zone_counterparty_label_url
       - zone_counterparty_label_url2
+      - zone_counterparty_readable_name
+      - zone_label_url
+      - zone_label_url2
+      - zone_readable_name
       filter: {}
       limit: 10000
       allow_aggregations: true
