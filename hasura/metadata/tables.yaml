@@ -84,6 +84,9 @@
     name: ibc_connections
 - table:
     schema: public
+    name: ibc_transfer_hourly_cashflow
+- table:
+    schema: public
     name: ibc_transfer_hourly_stats
 - table:
     schema: public
