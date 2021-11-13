@@ -1,0 +1,1 @@
+CREATE TABLE "public"."tokens"("zone" varchar NOT NULL, "base_denom" varchar NOT NULL, "coingecko_id" varchar, "logo_url" varchar, "symbol" varchar, "symbol_point_exponent" integer, "is_price_ignored" bool NOT NULL DEFAULT false, PRIMARY KEY ("zone","base_denom") , FOREIGN KEY ("zone") REFERENCES "public"."zones"("chain_id") ON UPDATE restrict ON DELETE restrict);

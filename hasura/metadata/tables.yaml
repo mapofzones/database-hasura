@@ -93,6 +93,9 @@
     name: periods
 - table:
     schema: public
+    name: tokens
+- table:
+    schema: public
     name: total_tx_hourly_stats
 - table:
     schema: public
