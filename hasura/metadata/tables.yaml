@@ -96,6 +96,9 @@
     name: periods
 - table:
     schema: public
+    name: token_prices
+- table:
+    schema: public
     name: tokens
 - table:
     schema: public
