@@ -1,0 +1,1 @@
+CREATE TABLE "public"."derivatives"("zone" varchar NOT NULL, "denom" varchar NOT NULL, "path" varchar, "base_denom" varchar, "origin_zone" varchar, PRIMARY KEY ("zone","denom") , FOREIGN KEY ("base_denom", "origin_zone") REFERENCES "public"."tokens"("base_denom", "zone") ON UPDATE restrict ON DELETE restrict);

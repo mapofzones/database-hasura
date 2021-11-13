@@ -51,6 +51,9 @@
       allow_aggregations: true
 - table:
     schema: public
+    name: derivatives
+- table:
+    schema: public
     name: headers
   select_permissions:
   - role: front
