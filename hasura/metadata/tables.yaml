@@ -93,6 +93,15 @@
     name: ibc_transfer_hourly_stats
 - table:
     schema: public
+    name: nodes_addrs
+- table:
+    schema: public
+    name: nodes_lcd_addrs
+- table:
+    schema: public
+    name: nodes_rpc_addrs
+- table:
+    schema: public
     name: periods
 - table:
     schema: public
