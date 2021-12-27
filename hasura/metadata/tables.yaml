@@ -73,6 +73,9 @@
       - channels_percent_active_period
       - channels_percent_active_period_diff
       - is_mainnet_only
+      - ibc_cashflow_period
+      - ibc_cashflow_period_diff
+      - top_ibc_cashflow_zone_pair
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -136,13 +139,23 @@
   - role: front
     permission:
       columns:
-      - channels_cnt_active
-      - channels_cnt_open
-      - channels_percent_active
-      - is_mainnet
+      - timeframe
       - source
       - target
-      - timeframe
+      - channels_cnt_open
+      - channels_cnt_active
+      - channels_percent_active
+      - is_mainnet
+      - source_cashflow_in
+      - source_cashflow_in_percent
+      - source_cashflow_out
+      - source_cashflow_out_percent
+      - source_transfers_period
+      - target_cashflow_in
+      - target_cashflow_in_percent
+      - target_cashflow_out
+      - target_cashflow_out_percent
+      - target_transfers_period
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -216,6 +229,19 @@
       - total_txs_mainnet_rating
       - ibc_tx_in_mainnet_weight
       - zone_label_url2
+      - ibc_cashflow
+      - ibc_cashflow_diff
+      - ibc_cashflow_rating
+      - ibc_cashflow_rating_diff
+      - ibc_cashflow_weight
+      - ibc_cashflow_mainnet_rating
+      - ibc_cashflow_mainnet_rating_diff
+      - ibc_cashflow_mainnet_weight
+      - ibc_cashflow_in
+      - ibc_cashflow_in_percent
+      - ibc_cashflow_out
+      - ibc_cashflow_out_percent
+      - ibc_peers
       filter: {}
       limit: 10000
       allow_aggregations: true
