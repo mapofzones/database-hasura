@@ -305,6 +305,21 @@
       - ibc_cashflow_out
       - ibc_cashflow_out_percent
       - ibc_peers
+      - ibc_peers_mainnet
+      - ibc_cashflow_out_diff
+      - ibc_cashflow_out_rating
+      - ibc_cashflow_out_mainnet_rating
+      - ibc_cashflow_out_weight
+      - ibc_cashflow_out_mainnet_weight
+      - ibc_cashflow_out_rating_diff
+      - ibc_cashflow_out_mainnet_rating_diff
+      - ibc_cashflow_in_diff
+      - ibc_cashflow_in_rating
+      - ibc_cashflow_in_mainnet_rating
+      - ibc_cashflow_in_weight
+      - ibc_cashflow_in_mainnet_weight
+      - ibc_cashflow_in_rating_diff
+      - ibc_cashflow_in_mainnet_rating_diff
       filter: {}
       limit: 10000
       allow_aggregations: true
