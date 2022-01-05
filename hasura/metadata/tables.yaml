@@ -61,7 +61,7 @@
       columns:
       - zone
       - timeframe
-      - zone_counerparty
+      - zone_counterparty
       - zone_label_url
       - zone_counterparty_label_url
       - ibc_cashflow_in
@@ -76,6 +76,9 @@
       - ibc_tx_failed_diff
       - is_zone_up_to_date
       - is_zone_counterparty_up_to_date
+      - is_zone_counterparty_mainnet
+      - zone_readable_name
+      - zone_counterparty_readable_name
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -91,7 +94,7 @@
       - connection_id
       - channel_id
       - timeframe
-      - zone_counerparty
+      - zone_counterparty
       - is_opened
       - ibc_tx
       - ibc_tx_diff
@@ -101,7 +104,7 @@
       - zone_counterparty_label_url
       - zone_readable_name
       - zone_counterparty_readable_name
-      - is_zone_counerparty_mainnet
+      - is_zone_counterparty_mainnet
       - zone_label_url2
       - zone_counterparty_label_url2
       - zone_counterparty_channel_id
