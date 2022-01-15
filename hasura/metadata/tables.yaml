@@ -79,6 +79,8 @@
       - is_zone_counterparty_mainnet
       - zone_readable_name
       - zone_counterparty_readable_name
+      - ibc_cashflow_in_pending
+      - ibc_cashflow_out_pending
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -115,6 +117,8 @@
       - ibc_cashflow_out_diff
       - ibc_tx_success_rate
       - ibc_tx_success_rate_diff
+      - ibc_cashflow_in_pending
+      - ibc_cashflow_out_pending
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -142,6 +146,13 @@
       - ibc_cashflow_period
       - ibc_cashflow_period_diff
       - top_ibc_cashflow_zone_pair
+      - top_transfer_zone_pair
+      - ibc_cashflow_pending_period
+      - chart_cashflow
+      - ibc_transfers_period
+      - ibc_transfers_period_diff
+      - ibc_transfers_pending_period
+      - chart_transfers
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -323,6 +334,19 @@
       - ibc_cashflow_in_mainnet_weight
       - ibc_cashflow_in_rating_diff
       - ibc_cashflow_in_mainnet_rating_diff
+      - ibc_cashflow_pending
+      - ibc_cashflow_in_pending
+      - ibc_cashflow_out_pending
+      - chart_cashflow
+      - ibc_transfers
+      - ibc_transfers_diff
+      - ibc_transfers_pending
+      - ibc_transfers_rating
+      - ibc_transfers_rating_diff
+      - ibc_transfers_weight
+      - ibc_transfers_mainnet_rating
+      - ibc_transfers_mainnet_rating_diff
+      - ibc_transfers_mainnet_weight
       filter: {}
       limit: 10000
       allow_aggregations: true
