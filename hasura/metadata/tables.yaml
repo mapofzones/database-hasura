@@ -51,6 +51,9 @@
       allow_aggregations: true
 - table:
     schema: public
+    name: denom_traces
+- table:
+    schema: public
     name: derivatives
 - table:
     schema: public
