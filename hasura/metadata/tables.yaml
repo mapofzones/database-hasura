@@ -206,6 +206,39 @@
       - rpc_addr
       - is_alive
       - last_checked_at
+      - node_id
+      - version
+      - moniker
+      - tx_index
+      - connection_duration
+      - is_send_connection_active
+      - is_recv_connection_active
+      - last_block_height
+      - is_rpc_addr_active
+      - lcd_addr
+      - is_lcd_addr_active
+      - is_hidden
+      - is_prioritized
+      - ip
+      - location_continent
+      - location_continent_code
+      - location_country
+      - location_country_code
+      - location_region
+      - location_region_name
+      - location_city
+      - location_district
+      - location_zip
+      - location_lat
+      - location_lon
+      - location_timezone
+      - location_timezone_offset
+      - location_isp_name
+      - location_org
+      - location_org_as
+      - location_org_as_name
+      - is_hosting_location
+      - earliest_block_height
       filter: {}
       limit: 10000
       allow_aggregations: true
