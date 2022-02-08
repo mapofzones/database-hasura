@@ -84,6 +84,7 @@
       - zone_counterparty_readable_name
       - ibc_cashflow_in_pending
       - ibc_cashflow_out_pending
+      - ibc_tx_pending
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -122,6 +123,7 @@
       - ibc_tx_success_rate_diff
       - ibc_cashflow_in_pending
       - ibc_cashflow_out_pending
+      - ibc_tx_pending
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -269,6 +271,10 @@
       - target_cashflow_out
       - target_cashflow_out_percent
       - target_transfers_period
+      - ibc_transfers
+      - ibc_transfers_pending
+      - ibc_cashflow
+      - ibc_cashflow_pending
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -383,6 +389,7 @@
       - ibc_transfers_mainnet_rating
       - ibc_transfers_mainnet_rating_diff
       - ibc_transfers_mainnet_weight
+      - success_rate
       filter: {}
       limit: 10000
       allow_aggregations: true
