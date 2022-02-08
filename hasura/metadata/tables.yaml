@@ -241,6 +241,7 @@
       - location_org_as_name
       - is_hosting_location
       - earliest_block_height
+      - last_worked_at
       filter: {}
       limit: 10000
       allow_aggregations: true
