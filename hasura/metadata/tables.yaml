@@ -134,30 +134,31 @@
   - role: front
     permission:
       columns:
-      - timeframe
-      - zones_cnt_all
-      - channels_cnt_all
-      - zones_cnt_period
-      - channels_cnt_period
-      - chart
-      - top_zone_pair
-      - relations_cnt_open
-      - channels_cnt_open
       - channels_cnt_active_period
       - channels_cnt_active_period_diff
+      - channels_cnt_all
+      - channels_cnt_open
+      - channels_cnt_period
       - channels_percent_active_period
       - channels_percent_active_period_diff
-      - is_mainnet_only
+      - chart
+      - chart_cashflow
+      - chart_transfers
+      - ibc_cashflow_pending_period
       - ibc_cashflow_period
       - ibc_cashflow_period_diff
-      - top_ibc_cashflow_zone_pair
-      - top_transfer_zone_pair
-      - ibc_cashflow_pending_period
-      - chart_cashflow
+      - ibc_transfers_failed_period
+      - ibc_transfers_pending_period
       - ibc_transfers_period
       - ibc_transfers_period_diff
-      - ibc_transfers_pending_period
-      - chart_transfers
+      - is_mainnet_only
+      - relations_cnt_open
+      - timeframe
+      - top_ibc_cashflow_zone_pair
+      - top_transfer_zone_pair
+      - top_zone_pair
+      - zones_cnt_all
+      - zones_cnt_period
       filter: {}
       limit: 10000
       allow_aggregations: true
