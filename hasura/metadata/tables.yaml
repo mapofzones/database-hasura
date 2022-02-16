@@ -392,6 +392,14 @@
       - ibc_transfers_mainnet_rating_diff
       - ibc_transfers_mainnet_weight
       - success_rate
+      - ibc_active_addresses
+      - ibc_active_addresses_diff
+      - ibc_active_addresses_rating
+      - ibc_active_addresses_rating_diff
+      - ibc_active_addresses_weight
+      - ibc_active_addresses_mainnet_rating
+      - ibc_active_addresses_mainnet_rating_diff
+      - ibc_active_addresses_mainnet_weight
       filter: {}
       limit: 10000
       allow_aggregations: true
