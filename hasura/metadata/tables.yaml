@@ -400,6 +400,24 @@
       - ibc_active_addresses_mainnet_rating
       - ibc_active_addresses_mainnet_rating_diff
       - ibc_active_addresses_mainnet_weight
+      - website
+      - ibc_active_addresses_mainnet
+      - ibc_active_addresses_mainnet_diff
+      - success_rate_mainnet
+      - ibc_cashflow_mainnet
+      - ibc_cashflow_mainnet_diff
+      - ibc_cashflow_in_mainnet
+      - ibc_cashflow_in_percent_mainnet
+      - ibc_cashflow_out_mainnet
+      - ibc_cashflow_out_percent_mainnet
+      - ibc_transfers_mainnet
+      - ibc_transfers_mainnet_diff
+      - ibc_transfers_pending_mainnet
+      - ibc_cashflow_in_pending_mainnet
+      - ibc_cashflow_out_pending_mainnet
+      - ibc_cashflow_pending_mainnet
+      - ibc_cashflow_in_mainnet_diff
+      - ibc_cashflow_out_mainnet_diff
       filter: {}
       limit: 10000
       allow_aggregations: true
