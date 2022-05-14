@@ -180,12 +180,81 @@
 - table:
     schema: public
     name: nodes_addrs
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - ip_or_dns
+      - is_hidden
+      - is_prioritized
+      - continent
+      - continent_code
+      - country
+      - country_code
+      - region
+      - region_name
+      - city
+      - district
+      - zip
+      - lat
+      - lon
+      - timezone
+      - timezone_offset
+      - isp_name
+      - org
+      - org_as
+      - org_as_name
+      - is_hosting
+      - last_checked_at
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
 - table:
     schema: public
     name: nodes_lcd_addrs
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - lcd_addr
+      - zone
+      - ip_or_dns
+      - is_hidden
+      - is_prioritized
+      - is_alive
+      - response_time
+      - last_active
+      - last_checked_at
+      - added_at
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
 - table:
     schema: public
     name: nodes_rpc_addrs
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - rpc_addr
+      - zone
+      - ip_or_dns
+      - node_id
+      - version
+      - moniker
+      - tx_index
+      - last_block_height
+      - is_hidden
+      - is_prioritized
+      - is_alive
+      - response_time
+      - last_active
+      - last_checked_at
+      - earliest_block_height
+      - added_at
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
 - table:
     schema: public
     name: periods
