@@ -317,6 +317,9 @@
       allow_aggregations: true
 - table:
     schema: public
+    name: zone_parameters
+- table:
+    schema: public
     name: zones
 - table:
     schema: public

@@ -1,0 +1,1 @@
+CREATE TABLE "public"."zone_parameters"("zone" varchar NOT NULL, "datetime" timestamp NOT NULL, "active_validators_quantity" integer, "inflation" numeric, "amount_of_bonded" numeric, "unbound_period" integer, PRIMARY KEY ("zone","datetime") , FOREIGN KEY ("zone") REFERENCES "public"."zones"("chain_id") ON UPDATE restrict ON DELETE restrict);
