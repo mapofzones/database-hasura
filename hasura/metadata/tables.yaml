@@ -417,6 +417,12 @@
       limit: 10000
       allow_aggregations: true
 - table:
+    schema: intermediate
+    name: blockchains_hourly_stats
+- table:
+    schema: intermediate
+    name: channels_hourly_stats
+- table:
     schema: public
     name: active_addresses
 - table:
