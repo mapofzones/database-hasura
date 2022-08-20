@@ -1,4 +1,422 @@
 - table:
+    schema: flat
+    name: blockchain_relations
+  object_relationships:
+  - name: blockchain
+    using:
+      foreign_key_constraint_on: blockchain_target
+  - name: blockchainByBlockchainSource
+    using:
+      foreign_key_constraint_on: blockchain_source
+  - name: timeframeByTimeframe
+    using:
+      foreign_key_constraint_on: timeframe
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - blockchain_source
+      - blockchain_target
+      - is_mainnet
+      - timeframe
+      - ibc_transfers
+      - ibc_transfers_diff
+      - ibc_transfers_pending
+      - ibc_transfers_failed
+      - ibc_cashflow
+      - ibc_cashflow_diff
+      - ibc_cashflow_pending
+      - source_to_target_ibc_transfers
+      - source_to_target_ibc_cashflow
+      - target_to_source_ibc_transfers
+      - target_to_source_ibc_cashflow
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: blockchain_stats
+  object_relationships:
+  - name: blockchainByBlockchain
+    using:
+      foreign_key_constraint_on: blockchain
+  - name: timeframeByTimeframe
+    using:
+      foreign_key_constraint_on: timeframe
+  array_relationships:
+  - name: blockchain_tf_charts
+    using:
+      manual_configuration:
+        remote_table:
+          schema: flat
+          name: blockchain_tf_charts
+        column_mapping:
+          blockchain: blockchain
+          timeframe: timeframe
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - blockchain
+      - timeframe
+      - txs
+      - txs_diff
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: blockchain_switched_stats
+  object_relationships:
+  - name: blockchainByBlockchain
+    using:
+      foreign_key_constraint_on: blockchain
+  - name: timeframeByTimeframe
+    using:
+      foreign_key_constraint_on: timeframe
+  array_relationships:
+  - name: blockchain_tf_switched_charts
+    using:
+      manual_configuration:
+        remote_table:
+          schema: flat
+          name: blockchain_tf_switched_charts
+        column_mapping:
+          blockchain: blockchain
+          timeframe: timeframe
+          is_mainnet: is_mainnet
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - blockchain
+      - is_mainnet
+      - timeframe
+      - channels_cnt
+      - ibc_peers
+      - txs_rating
+      - txs_rating_diff
+      - txs_weight
+      - ibc_active_addresses_cnt
+      - ibc_active_addresses_cnt_diff
+      - ibc_active_addresses_cnt_rating
+      - ibc_active_addresses_cnt_rating_diff
+      - ibc_active_addresses_cnt_weight
+      - ibc_cashflow
+      - ibc_cashflow_diff
+      - ibc_cashflow_rating
+      - ibc_cashflow_rating_diff
+      - ibc_cashflow_weight
+      - ibc_cashflow_pending
+      - ibc_cashflow_in
+      - ibc_cashflow_in_diff
+      - ibc_cashflow_in_rating
+      - ibc_cashflow_in_rating_diff
+      - ibc_cashflow_in_weight
+      - ibc_cashflow_in_percent
+      - ibc_cashflow_in_pending
+      - ibc_cashflow_out
+      - ibc_cashflow_out_diff
+      - ibc_cashflow_out_rating
+      - ibc_cashflow_out_rating_diff
+      - ibc_cashflow_out_weight
+      - ibc_cashflow_out_percent
+      - ibc_cashflow_out_pending
+      - ibc_transfers
+      - ibc_transfers_diff
+      - ibc_transfers_rating
+      - ibc_transfers_rating_diff
+      - ibc_transfers_weight
+      - ibc_transfers_pending
+      - ibc_transfers_success_rate
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: blockchain_tf_chart_type
+  array_relationships:
+  - name: blockchain_tf_charts
+    using:
+      foreign_key_constraint_on:
+        column: chart_type
+        table:
+          schema: flat
+          name: blockchain_tf_charts
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - chart_type
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: blockchain_tf_charts
+  object_relationships:
+  - name: blockchain_stat
+    using:
+      manual_configuration:
+        remote_table:
+          schema: flat
+          name: blockchain_stats
+        column_mapping:
+          blockchain: blockchain
+          timeframe: timeframe
+  - name: blockchain_tf_chart_type
+    using:
+      foreign_key_constraint_on: chart_type
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - blockchain
+      - timeframe
+      - chart_type
+      - point_index
+      - point_value
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: blockchain_tf_switched_chart_type
+  array_relationships:
+  - name: blockchain_tf_switched_charts
+    using:
+      foreign_key_constraint_on:
+        column: chart_type
+        table:
+          schema: flat
+          name: blockchain_tf_switched_charts
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - chart_type
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: blockchain_tf_switched_charts
+  object_relationships:
+  - name: blockchain_switched_stat
+    using:
+      manual_configuration:
+        remote_table:
+          schema: flat
+          name: blockchain_switched_stats
+        column_mapping:
+          blockchain: blockchain
+          timeframe: timeframe
+          is_mainnet: is_mainnet
+  - name: blockchain_tf_switched_chart_type
+    using:
+      foreign_key_constraint_on: chart_type
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - blockchain
+      - is_mainnet
+      - timeframe
+      - chart_type
+      - point_index
+      - point_value
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: blockchains
+  array_relationships:
+  - name: blockchain_relations
+    using:
+      foreign_key_constraint_on:
+        column: blockchain_source
+        table:
+          schema: flat
+          name: blockchain_relations
+  - name: blockchainRelationsByBlockchainTarget
+    using:
+      foreign_key_constraint_on:
+        column: blockchain_target
+        table:
+          schema: flat
+          name: blockchain_relations
+  - name: blockchain_stats
+    using:
+      foreign_key_constraint_on:
+        column: blockchain
+        table:
+          schema: flat
+          name: blockchain_stats
+  - name: blockchain_switched_stats
+    using:
+      foreign_key_constraint_on:
+        column: blockchain
+        table:
+          schema: flat
+          name: blockchain_switched_stats
+  - name: channels_stats
+    using:
+      foreign_key_constraint_on:
+        column: blockchain
+        table:
+          schema: flat
+          name: channels_stats
+  - name: channelsStatsByCounterpartyBlockchain
+    using:
+      foreign_key_constraint_on:
+        column: counterparty_blockchain
+        table:
+          schema: flat
+          name: channels_stats
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - network_id
+      - name
+      - logo_url
+      - is_synced
+      - website
+      - is_mainnet
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: channels_stats
+  object_relationships:
+  - name: blockchainByBlockchain
+    using:
+      foreign_key_constraint_on: blockchain
+  - name: blockchainByCounterpartyBlockchain
+    using:
+      foreign_key_constraint_on: counterparty_blockchain
+  - name: timeframeByTimeframe
+    using:
+      foreign_key_constraint_on: timeframe
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - blockchain
+      - timeframe
+      - channel_id
+      - client_id
+      - connection_id
+      - is_channel_open
+      - counterparty_blockchain
+      - counterparty_channel_id
+      - ibc_transfers
+      - ibc_transfers_diff
+      - ibc_transfers_pending
+      - ibc_transfers_failed
+      - ibc_transfers_failed_diff
+      - ibc_transfers_success_rate
+      - ibc_transfers_success_rate_diff
+      - ibc_cashflow_in
+      - ibc_cashflow_in_diff
+      - ibc_cashflow_in_pending
+      - ibc_cashflow_out
+      - ibc_cashflow_out_diff
+      - ibc_cashflow_out_pending
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: timeframes
+  array_relationships:
+  - name: blockchain_relations
+    using:
+      foreign_key_constraint_on:
+        column: timeframe
+        table:
+          schema: flat
+          name: blockchain_relations
+  - name: blockchain_stats
+    using:
+      foreign_key_constraint_on:
+        column: timeframe
+        table:
+          schema: flat
+          name: blockchain_stats
+  - name: blockchain_switched_stats
+    using:
+      foreign_key_constraint_on:
+        column: timeframe
+        table:
+          schema: flat
+          name: blockchain_switched_stats
+  - name: channels_stats
+    using:
+      foreign_key_constraint_on:
+        column: timeframe
+        table:
+          schema: flat
+          name: channels_stats
+  - name: total_tf_switched_charts
+    using:
+      foreign_key_constraint_on:
+        column: timeframe
+        table:
+          schema: flat
+          name: total_tf_switched_charts
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - timeframe_in_hours
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: total_tf_switched_chart_type
+  array_relationships:
+  - name: total_tf_switched_charts
+    using:
+      foreign_key_constraint_on:
+        column: chart_type
+        table:
+          schema: flat
+          name: total_tf_switched_charts
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - chart_type
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: total_tf_switched_charts
+  object_relationships:
+  - name: timeframeByTimeframe
+    using:
+      foreign_key_constraint_on: timeframe
+  - name: total_tf_switched_chart_type
+    using:
+      foreign_key_constraint_on: chart_type
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - is_mainnet
+      - timeframe
+      - chart_type
+      - point_index
+      - point_value
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
     schema: public
     name: active_addresses
 - table:
