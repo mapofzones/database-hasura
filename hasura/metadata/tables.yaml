@@ -17,19 +17,18 @@
       columns:
       - blockchain_source
       - blockchain_target
-      - is_mainnet
-      - timeframe
-      - ibc_transfers
-      - ibc_transfers_diff
-      - ibc_transfers_pending
-      - ibc_transfers_failed
       - ibc_cashflow
       - ibc_cashflow_diff
       - ibc_cashflow_pending
-      - source_to_target_ibc_transfers
+      - ibc_transfers
+      - ibc_transfers_diff
+      - ibc_transfers_failed
+      - ibc_transfers_pending
       - source_to_target_ibc_cashflow
-      - target_to_source_ibc_transfers
+      - source_to_target_ibc_transfers
       - target_to_source_ibc_cashflow
+      - target_to_source_ibc_transfers
+      - timeframe
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -61,6 +60,8 @@
       - timeframe
       - txs
       - txs_diff
+      - ibc_active_addresses_cnt
+      - ibc_active_addresses_cnt_diff
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -90,45 +91,43 @@
     permission:
       columns:
       - blockchain
-      - is_mainnet
-      - timeframe
       - channels_cnt
-      - ibc_peers
-      - txs_rating
-      - txs_rating_diff
-      - txs_weight
-      - ibc_active_addresses_cnt
-      - ibc_active_addresses_cnt_diff
       - ibc_active_addresses_cnt_rating
       - ibc_active_addresses_cnt_rating_diff
       - ibc_active_addresses_cnt_weight
       - ibc_cashflow
       - ibc_cashflow_diff
-      - ibc_cashflow_rating
-      - ibc_cashflow_rating_diff
-      - ibc_cashflow_weight
-      - ibc_cashflow_pending
       - ibc_cashflow_in
       - ibc_cashflow_in_diff
+      - ibc_cashflow_in_pending
+      - ibc_cashflow_in_percent
       - ibc_cashflow_in_rating
       - ibc_cashflow_in_rating_diff
       - ibc_cashflow_in_weight
-      - ibc_cashflow_in_percent
-      - ibc_cashflow_in_pending
       - ibc_cashflow_out
       - ibc_cashflow_out_diff
+      - ibc_cashflow_out_pending
+      - ibc_cashflow_out_percent
       - ibc_cashflow_out_rating
       - ibc_cashflow_out_rating_diff
       - ibc_cashflow_out_weight
-      - ibc_cashflow_out_percent
-      - ibc_cashflow_out_pending
+      - ibc_cashflow_pending
+      - ibc_cashflow_rating
+      - ibc_cashflow_rating_diff
+      - ibc_cashflow_weight
+      - ibc_peers
       - ibc_transfers
       - ibc_transfers_diff
+      - ibc_transfers_pending
       - ibc_transfers_rating
       - ibc_transfers_rating_diff
-      - ibc_transfers_weight
-      - ibc_transfers_pending
       - ibc_transfers_success_rate
+      - ibc_transfers_weight
+      - is_mainnet
+      - timeframe
+      - txs_rating
+      - txs_rating_diff
+      - txs_weight
       filter: {}
       limit: 10000
       allow_aggregations: true
