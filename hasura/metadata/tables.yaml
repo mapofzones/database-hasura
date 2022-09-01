@@ -62,6 +62,9 @@
       - txs_diff
       - ibc_active_addresses_cnt
       - ibc_active_addresses_cnt_diff
+      - active_addresses_cnt
+      - active_addresses_cnt_diff
+      - ibc_active_addresses_percent
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -91,43 +94,39 @@
     permission:
       columns:
       - blockchain
-      - channels_cnt
-      - ibc_active_addresses_cnt_rating
-      - ibc_active_addresses_cnt_rating_diff
-      - ibc_active_addresses_cnt_weight
-      - ibc_cashflow
-      - ibc_cashflow_diff
-      - ibc_cashflow_in
-      - ibc_cashflow_in_diff
-      - ibc_cashflow_in_pending
-      - ibc_cashflow_in_percent
-      - ibc_cashflow_in_rating
-      - ibc_cashflow_in_rating_diff
-      - ibc_cashflow_in_weight
-      - ibc_cashflow_out
-      - ibc_cashflow_out_diff
-      - ibc_cashflow_out_pending
-      - ibc_cashflow_out_percent
-      - ibc_cashflow_out_rating
-      - ibc_cashflow_out_rating_diff
-      - ibc_cashflow_out_weight
-      - ibc_cashflow_pending
-      - ibc_cashflow_rating
-      - ibc_cashflow_rating_diff
-      - ibc_cashflow_weight
-      - ibc_peers
-      - ibc_transfers
-      - ibc_transfers_diff
-      - ibc_transfers_pending
-      - ibc_transfers_rating
-      - ibc_transfers_rating_diff
-      - ibc_transfers_success_rate
-      - ibc_transfers_weight
       - is_mainnet
       - timeframe
+      - channels_cnt
+      - ibc_peers
       - txs_rating
       - txs_rating_diff
-      - txs_weight
+      - ibc_active_addresses_cnt_rating
+      - ibc_active_addresses_cnt_rating_diff
+      - ibc_cashflow
+      - ibc_cashflow_diff
+      - ibc_cashflow_rating
+      - ibc_cashflow_rating_diff
+      - ibc_cashflow_pending
+      - ibc_cashflow_in
+      - ibc_cashflow_in_diff
+      - ibc_cashflow_in_rating
+      - ibc_cashflow_in_rating_diff
+      - ibc_cashflow_in_percent
+      - ibc_cashflow_in_pending
+      - ibc_cashflow_out
+      - ibc_cashflow_out_diff
+      - ibc_cashflow_out_rating
+      - ibc_cashflow_out_rating_diff
+      - ibc_cashflow_out_percent
+      - ibc_cashflow_out_pending
+      - ibc_transfers
+      - ibc_transfers_diff
+      - ibc_transfers_rating
+      - ibc_transfers_rating_diff
+      - ibc_transfers_pending
+      - ibc_transfers_success_rate
+      - active_addresses_cnt_rating
+      - active_addresses_cnt_rating_diff
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -230,6 +229,16 @@
 - table:
     schema: flat
     name: blockchains
+  object_relationships:
+  - name: token
+    using:
+      manual_configuration:
+        remote_table:
+          schema: flat
+          name: tokens
+        column_mapping:
+          base_token: denom
+          network_id: blockchain
   array_relationships:
   - name: blockchain_relations
     using:
@@ -273,6 +282,13 @@
         table:
           schema: flat
           name: channels_stats
+  - name: tokens
+    using:
+      foreign_key_constraint_on:
+        column: blockchain
+        table:
+          schema: flat
+          name: tokens
   select_permissions:
   - role: front
     permission:
@@ -283,6 +299,14 @@
       - is_synced
       - website
       - is_mainnet
+      - base_token
+      - inflation
+      - staking_apr
+      - unbonding_period
+      - bonded_tokens
+      - bonded_tokens_percent
+      - validators_cnt
+      - nodes_cnt
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -324,6 +348,9 @@
       - ibc_cashflow_out
       - ibc_cashflow_out_diff
       - ibc_cashflow_out_pending
+      - ibc_cashflow
+      - ibc_cashflow_diff
+      - ibc_cashflow_pending
       filter: {}
       limit: 10000
       allow_aggregations: true
@@ -371,6 +398,97 @@
     permission:
       columns:
       - timeframe_in_hours
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: token_chart_type
+  array_relationships:
+  - name: token_charts
+    using:
+      foreign_key_constraint_on:
+        column: chart_type
+        table:
+          schema: flat
+          name: token_charts
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - chart_type
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: token_charts
+  object_relationships:
+  - name: token
+    using:
+      manual_configuration:
+        remote_table:
+          schema: flat
+          name: tokens
+        column_mapping:
+          blockchain: blockchain
+          denom: denom
+  - name: token_chart_type
+    using:
+      foreign_key_constraint_on: chart_type
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - blockchain
+      - denom
+      - chart_type
+      - point_index
+      - point_value
+      filter: {}
+      limit: 10000
+      allow_aggregations: true
+- table:
+    schema: flat
+    name: tokens
+  object_relationships:
+  - name: blockchainByBlockchain
+    using:
+      foreign_key_constraint_on: blockchain
+  array_relationships:
+  - name: blockchains
+    using:
+      manual_configuration:
+        remote_table:
+          schema: flat
+          name: blockchains
+        column_mapping:
+          blockchain: network_id
+          denom: base_token
+  - name: token_charts
+    using:
+      manual_configuration:
+        remote_table:
+          schema: flat
+          name: token_charts
+        column_mapping:
+          blockchain: blockchain
+          denom: denom
+  select_permissions:
+  - role: front
+    permission:
+      columns:
+      - blockchain
+      - denom
+      - symbol
+      - logo_url
+      - price
+      - price_day_diff_percent
+      - price_week_diff_percent
+      - market_cap
+      - on_chain_supply
+      - token_day_trading_volume
+      - token_day_trading_volume_diff_percent
       filter: {}
       limit: 10000
       allow_aggregations: true
