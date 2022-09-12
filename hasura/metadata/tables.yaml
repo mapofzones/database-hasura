@@ -489,6 +489,7 @@
       - on_chain_supply
       - token_day_trading_volume
       - token_day_trading_volume_diff_percent
+      - price_month_diff_percent
       filter: {}
       limit: 10000
       allow_aggregations: true
