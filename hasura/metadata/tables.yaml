@@ -17,18 +17,19 @@
       columns:
       - blockchain_source
       - blockchain_target
+      - timeframe
+      - ibc_transfers
+      - ibc_transfers_diff
+      - ibc_transfers_pending
+      - ibc_transfers_failed
       - ibc_cashflow
       - ibc_cashflow_diff
       - ibc_cashflow_pending
-      - ibc_transfers
-      - ibc_transfers_diff
-      - ibc_transfers_failed
-      - ibc_transfers_pending
-      - source_to_target_ibc_cashflow
       - source_to_target_ibc_transfers
-      - target_to_source_ibc_cashflow
+      - source_to_target_ibc_cashflow
       - target_to_source_ibc_transfers
-      - timeframe
+      - target_to_source_ibc_cashflow
+      - is_mainnet
       filter: {}
       limit: 10000
       allow_aggregations: true
